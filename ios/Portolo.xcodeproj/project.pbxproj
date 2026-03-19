@@ -11,6 +11,10 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		761780ED2CA45674006654EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761780EC2CA45674006654EE /* AppDelegate.swift */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		D0E8DA83ECF3473EBD1BA486 /* segoe.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 27C5014225054EA3922FD89D /* segoe.ttf */; };
+		F3B8EDB34925452398187CB9 /* segoe_bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5DEB000F916D4EE6A4C42338 /* segoe_bold.ttf */; };
+		DFB13BECDD984E0C8BD2C182 /* segoe_bold_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 00578EBF9FCB4817BEBC62F4 /* segoe_bold_italic.ttf */; };
+		5500AFA1E1D34ED5BAF962C7 /* segoe_italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = C5137E25BDBC4206A5F85EE0 /* segoe_italic.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		761780EC2CA45674006654EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = Portolo/AppDelegate.swift; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Portolo/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		27C5014225054EA3922FD89D /* segoe.ttf */ = {isa = PBXFileReference; name = "segoe.ttf"; path = "../src/assets/fonts/segoe.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		5DEB000F916D4EE6A4C42338 /* segoe_bold.ttf */ = {isa = PBXFileReference; name = "segoe_bold.ttf"; path = "../src/assets/fonts/segoe_bold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		00578EBF9FCB4817BEBC62F4 /* segoe_bold_italic.ttf */ = {isa = PBXFileReference; name = "segoe_bold_italic.ttf"; path = "../src/assets/fonts/segoe_bold_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		C5137E25BDBC4206A5F85EE0 /* segoe_italic.ttf */ = {isa = PBXFileReference; name = "segoe_italic.ttf"; path = "../src/assets/fonts/segoe_italic.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +82,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				5747E9D672DF4716A155555E /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -96,6 +105,18 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		5747E9D672DF4716A155555E /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				27C5014225054EA3922FD89D /* segoe.ttf */,
+				5DEB000F916D4EE6A4C42338 /* segoe_bold.ttf */,
+				00578EBF9FCB4817BEBC62F4 /* segoe_bold_italic.ttf */,
+				C5137E25BDBC4206A5F85EE0 /* segoe_italic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -159,6 +180,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				D0E8DA83ECF3473EBD1BA486 /* segoe.ttf in Resources */,
+				F3B8EDB34925452398187CB9 /* segoe_bold.ttf in Resources */,
+				DFB13BECDD984E0C8BD2C182 /* segoe_bold_italic.ttf in Resources */,
+				5500AFA1E1D34ED5BAF962C7 /* segoe_italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
