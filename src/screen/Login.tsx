@@ -11,14 +11,43 @@ import {View,
 
   const screenWidth = Dimensions.get('window').width;
 
-const Login = () => {
+  
 
+const Login = () => {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
   const [showPassword, setShowPassword] = useState(false);
-  
+
+  const validateLogin = () => {
+      const newErrors: { email?: string; password?: string } = {};
+      console.log('email:', email)
+      if (!email.trim()) newErrors.email = 'Please enter email';
+      if (!password.trim()) newErrors.password = 'Please enter password';
+      setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleLogin = async () => {
+  if (!validateLogin()) return;
+  console.log('login click')
+ }
+
+ 
+
+ const handleSignup = async () => {
+  console.log('signup click')
+ }
+
+
+ const openCms = (text: string) => {
+  console.log(text)
+};
+
+ const forgotPassClick = () => {
+  console.log("Forgot pass click")
+};
 
   return (
    <View style={styles.screen}>   {/* 👈 full screen wrapper */}
@@ -56,6 +85,7 @@ const Login = () => {
       </View>
 
       {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+      
     </View>
 
     <Text style={styles.input_header}>Password</Text>
@@ -73,10 +103,11 @@ const Login = () => {
           value={password}
           onChangeText={t => {
             setPassword(t);
-            setErrors({ ...errors, password: undefined });
+             if (errors.password) {
+                setErrors(prev => ({ ...prev, password: undefined }));
+            }
           }}
         />
-
          <TouchableOpacity
               style={[styles.eyeIcon, loading && { opacity: 0.5 }]}
               onPress={() => !loading && setShowPassword(p => !p)}
@@ -92,8 +123,15 @@ const Login = () => {
               />
             </TouchableOpacity>
       </View>
-            {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-          <Text style={styles.forget_pass}>Forgot Password?</Text>
+     <View style={styles.container_horizontal_without_space}>
+        <Text style={styles.errorText1}>
+          {errors.password || ' '}  {/* 👈 keeps space */}
+        </Text>
+
+        <Text style={styles.forget_pass} onPress={forgotPassClick}>
+          Forgot Password?
+        </Text>
+     </View>
           <TouchableOpacity
               style={[styles.button, loading && { opacity: 0.7 }]}
               onPress={handleLogin}
@@ -148,16 +186,7 @@ const Login = () => {
 
 export default Login;
 
- const handleLogin = async () => {
- }
-
- const handleSignup = async () => {
- }
-
-
- const openCms = (text: string) => {
-  
-  };
+ 
 
 const FullScreenLoader = ({ visible }: { visible: boolean }) => {
   if (!visible) return null;
@@ -222,15 +251,7 @@ const styles = StyleSheet.create({
         fontFamily: 'segoe_bold',
         width: '100%'
   },
-  forget_pass: {
-        fontSize: 12,
-        textAlign: 'right',
-        marginBottom: 5,
-        color: '#E67515',
-        fontFamily: 'segoe_bold',
-        width: '100%',
-        marginTop:5,
-  },
+ 
     loaderOverlay: {
         position: 'absolute',
         top: 0,
@@ -271,11 +292,7 @@ const styles = StyleSheet.create({
   errorInput: {
     borderColor: 'red',
 },
-  errorText: {
-      color: 'red',
-      marginTop: 4,
-      fontSize: 13,
-},
+ 
 
 inputWrapper: {
   flexDirection: 'row',
@@ -362,6 +379,7 @@ buttonIcon: {
     marginBottom: 30,
   },
 
+
   container_horizontal1: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -383,4 +401,33 @@ buttonIcon: {
     fontSize: 12,
     marginHorizontal: 4,
   },
+
+ container_horizontal_without_space: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    width: '100%',
+},
+
+errorText1: {
+  color: 'red',
+  fontSize: 12,
+  flex: 1,          // 👈 reserves space always
+  marginRight: 10,
+  marginTop:5,
+},
+
+errorText: { 
+   color: 'red',
+   marginTop: 4,
+   fontSize: 12,
+   flexWrap: 'wrap' 
+  },
+
+forget_pass: {
+  fontSize: 12,
+  color: '#E67515',
+  fontFamily: 'segoe_bold',
+  marginTop:5,
+},
 });
