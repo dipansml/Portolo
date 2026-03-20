@@ -14,6 +14,11 @@ import {View,
 const Login = () => {
 
   const [loading, setLoading] = useState(false);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState<{ email?: string; password?: string }>({});
+  const [showPassword, setShowPassword] = useState(false);
+  
 
   return (
    <View style={styles.screen}>   {/* 👈 full screen wrapper */}
@@ -28,10 +33,69 @@ const Login = () => {
     {/* Content */}
     <View style={styles.container}>
       <FullScreenLoader visible={loading} />
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Welcome Back</Text>
+      <Text style={styles.title_normal}>Integrated Intelligence for Clinical Research</Text>
+      <Text style={styles.input_header}>Email Address</Text>
+  
+      <View style={styles.inputContainer}>
+      <View style={styles.inputWrapper}>
+        <Image
+          source={require('../assets/images/ic_email.png')}
+          style={styles.icon}
+        />
 
+        <TextInput
+          style={[styles.input, errors.email && styles.errorInput]}
+          placeholder="name@institution.edu"
+          value={email}
+          onChangeText={t => {
+            setEmail(t);
+            setErrors({ ...errors, email: undefined });
+          }}
+        />
+      </View>
+
+      {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
     </View>
 
+    <Text style={styles.input_header}>Password</Text>
+      <View style={styles.inputContainer}>
+      <View style={styles.inputWrapper}>
+        <Image
+          source={require('../assets/images/ic_password.png')}
+          style={styles.icon}
+        />
+
+        <TextInput
+          style={[styles.input, errors.password && styles.errorInput]}
+          placeholder="******"
+          secureTextEntry={!showPassword}
+          value={password}
+          onChangeText={t => {
+            setPassword(t);
+            setErrors({ ...errors, password: undefined });
+          }}
+        />
+
+         <TouchableOpacity
+              style={[styles.eyeIcon, loading && { opacity: 0.5 }]}
+              onPress={() => !loading && setShowPassword(p => !p)}
+              disabled={loading}
+            >
+              <Image
+                source={
+                  showPassword
+                    ? require('../assets/images/pass_visible.png')
+                    : require('../assets/images/pass_invisible.png')
+                }
+                style={styles.eyeImage}
+              />
+            </TouchableOpacity>
+      </View>
+
+  {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+</View>     
+    </View>
   </View>
   );
 };
@@ -80,8 +144,25 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: '600',
         textAlign: 'center',
+        marginBottom: 10,
+        color: '#000000',
+        fontFamily: 'segoe_bold',
+  },
+  title_normal: {
+        fontSize: 12,
+        textAlign: 'center',
         marginBottom: 20,
-        fontFamily: 'segoe_bold'
+        color: '#48566A',
+        fontFamily: 'segoe',
+  },
+
+  input_header: {
+        fontSize: 12,
+        textAlign: 'left',
+        marginBottom: 5,
+        color: '#48566A',
+        fontFamily: 'segoe_bold',
+        width: '100%'
   },
     loaderOverlay: {
     position: 'absolute',
@@ -101,4 +182,58 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
 },
+    
+    inputContainer: {
+        marginBottom: 10,
+        width: '100%',
+},
+
+  input: {
+    padding: 4,
+    fontSize: 12,
+    width: '100%',
+    height: 40,
+    flex: 1,
+    borderColor: "#00000000",
+    paddingVertical: 12,
+    fontFamily: "segoe",
+    color: '#000',
+},
+
+  errorInput: {
+    borderColor: 'red',
+},
+  errorText: {
+      color: 'red',
+      marginTop: 4,
+      fontSize: 13,
+},
+
+inputWrapper: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  borderWidth: 1,
+  borderColor: '#E0E6EF',
+  borderRadius: 6,
+  paddingHorizontal: 10,
+},
+
+icon: {
+  width: 16,
+  height: 16,
+  marginRight: 4,
+  tintColor: '#888', // optional
+},
+eyeIcon: {
+    position: 'absolute',
+    right: 12,
+    height: '100%',
+    justifyContent: 'center',
+  },
+eyeImage: {
+    width: 22,
+    height: 22,
+    tintColor: '#666',
+    resizeMode: 'contain',
+  },
 });
