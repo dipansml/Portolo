@@ -415,13 +415,15 @@ errorText1: {
   flex: 1,          // 👈 reserves space always
   marginRight: 10,
   marginTop:5,
+  fontFamily: "segoe",
 },
 
 errorText: { 
    color: 'red',
    marginTop: 4,
    fontSize: 12,
-   flexWrap: 'wrap' 
+   flexWrap: 'wrap',
+   fontFamily: "segoe",
   },
 
 forget_pass: {
