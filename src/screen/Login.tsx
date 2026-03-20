@@ -92,15 +92,72 @@ const Login = () => {
               />
             </TouchableOpacity>
       </View>
+            {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
+          <Text style={styles.forget_pass}>Forgot Password?</Text>
+          <TouchableOpacity
+              style={[styles.button, loading && { opacity: 0.7 }]}
+              onPress={handleLogin}
+              disabled={loading}
+            >
+              <View style={styles.buttonContent}>
+                <Text style={styles.buttonText}>Sign In</Text>
 
-  {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-</View>     
+                <Image
+                  source={require('../assets/images/arrow_right.png')}
+                  style={styles.buttonIcon}
+                />
+              </View>
+            </TouchableOpacity>
+
+            <View style={styles.container_horizontal}>
+                <View style={styles.line} />
+                <Text style={styles.text}>New to Portolo?</Text>
+                <View style={styles.line} />
+            </View>
+             <TouchableOpacity
+              style={[styles.button_border, loading && { opacity: 0.7 }]}
+              onPress={handleSignup}
+              disabled={loading}
+            >
+              <View style={styles.buttonContent}>
+                <Text style={styles.buttonText_black}>Join Portolo</Text>
+              </View>
+            </TouchableOpacity>
+      </View>     
+      <View style={styles.container_horizontal1}>
+      <Text style={styles.link} onPress={() => openCms('TermsOfUse')}>
+        Terms of Use
+      </Text>
+
+      <Text style={styles.separator}> • </Text>
+
+      <Text style={styles.link} onPress={() => openCms('siteMap')}>
+        Site Map
+      </Text>
+
+      <Text style={styles.separator}> • </Text>
+
+      <Text style={styles.link} onPress={() => openCms('privacy')}>
+        Privacy Policy
+      </Text>
+    </View>
     </View>
   </View>
   );
 };
 
 export default Login;
+
+ const handleLogin = async () => {
+ }
+
+ const handleSignup = async () => {
+ }
+
+
+ const openCms = (text: string) => {
+  
+  };
 
 const FullScreenLoader = ({ visible }: { visible: boolean }) => {
   if (!visible) return null;
@@ -135,9 +192,10 @@ const styles = StyleSheet.create({
 },
 
     text: {
-        fontSize: 18,
-        fontWeight: '600',
-        color: '#333333',
+        marginHorizontal: 10,
+        fontSize: 14,
+        color: '#48566A',
+        fontFamily: 'segoe_semibold',
 },
 
     title: {
@@ -164,28 +222,38 @@ const styles = StyleSheet.create({
         fontFamily: 'segoe_bold',
         width: '100%'
   },
+  forget_pass: {
+        fontSize: 12,
+        textAlign: 'right',
+        marginBottom: 5,
+        color: '#E67515',
+        fontFamily: 'segoe_bold',
+        width: '100%',
+        marginTop:5,
+  },
     loaderOverlay: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundColor: 'rgba(0,0,0,0.25)',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 999,
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0,0,0,0.25)',
+        justifyContent: 'center',
+        alignItems: 'center',
+        zIndex: 999,
 },
 
     loaderText: {
-    marginTop: 12,
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: '500',
+        marginTop: 12,
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '500',
 },
     
     inputContainer: {
         marginBottom: 10,
         width: '100%',
+        backgroundColor: '#00000000',
 },
 
   input: {
@@ -214,7 +282,8 @@ inputWrapper: {
   alignItems: 'center',
   borderWidth: 1,
   borderColor: '#E0E6EF',
-  borderRadius: 6,
+  backgroundColor: '#F8FAFC',
+  borderRadius: 12,
   paddingHorizontal: 10,
 },
 
@@ -231,9 +300,87 @@ eyeIcon: {
     justifyContent: 'center',
   },
 eyeImage: {
-    width: 22,
-    height: 22,
+    width: 20,
+    height: 20,
     tintColor: '#666',
     resizeMode: 'contain',
+  },
+  button: {
+    height: 40,
+    backgroundColor: '#E67515',
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 10,
+},
+
+button_border: {
+    height: 40,
+    borderColor: '#E67515',
+    borderWidth: 1,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 10,
+},
+
+buttonContent: {
+  flexDirection: 'row',
+  alignItems: 'center',   // 👈 vertical center
+  justifyContent: 'center', // 👈 horizontal center
+},
+
+buttonText: {
+  color: '#fff',
+  fontSize: 14,
+  fontFamily: 'segoe_bold',
+  textAlignVertical: 'center', // 👈 Android fix
+},
+
+
+buttonText_black: {
+  color: '#000',
+  fontSize: 14,
+  fontFamily: 'segoe_bold',
+  textAlignVertical: 'center', // 👈 Android fix
+},
+
+buttonIcon: {
+  width: 14,
+  height: 14,
+  marginLeft: 6,
+  tintColor: '#fff',
+  resizeMode: 'contain',
+  marginTop: 2, // 👈 prevents distortion
+},
+
+ container_horizontal: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 30,
+    marginBottom: 30,
+  },
+
+  container_horizontal1: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  line: {
+    flex: 1,
+    height: 1,
+    backgroundColor: '#E0E6EF',
+  },
+  link: {
+    color: '#48566A',
+    fontSize: 12,
+    fontFamily: "segoe_bold"
+  },
+  separator: {
+    color: '#48566A',
+    fontSize: 12,
+    marginHorizontal: 4,
   },
 });
