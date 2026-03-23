@@ -40,8 +40,8 @@ const Dashboard = () => {
             <Image
               source={icon}
               style={{
-                width: 24,
-                height: 24,
+                width: 20,
+                height: 20,
                 resizeMode: 'contain',
 
                 // ✅ Change color on select
@@ -57,8 +57,8 @@ const Dashboard = () => {
 
         // ✅ Custom Font
         tabBarLabelStyle: {
-          fontFamily: 'segoe_bold',
-          fontSize: 10,
+          fontFamily: 'segoe',
+          fontSize: 11,
         },
       })}
     >
