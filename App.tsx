@@ -13,6 +13,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SplashScreen from './src/screen/SplashScreen.tsx';
 import Login from './src/screen/Login.tsx';
 
+//Test
+
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
