@@ -16,13 +16,13 @@ type DashboardParamList = {
 
 const Tab = createBottomTabNavigator<DashboardParamList>();
 
-const Dashboard = () => {
+const DashboardMain = () => {
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
 
-        // ✅ Custom Image Icon
+        //Custom Image Icon
         tabBarIcon: ({ focused }) => {
           let icon;
 
@@ -35,7 +35,6 @@ const Dashboard = () => {
           } else if (route.name === 'Settings') {
             icon = require('../assets/images/settings.png');
           }
-
           return (
             <Image
               source={icon}
@@ -43,8 +42,7 @@ const Dashboard = () => {
                 width: 20,
                 height: 20,
                 resizeMode: 'contain',
-
-                // ✅ Change color on select
+                //Change color on select
                 tintColor: focused ? '#E67515' : 'gray',
               }}
             />
@@ -70,4 +68,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardMain;

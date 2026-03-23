@@ -4,12 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import SplashScreen from './src/screen/SplashScreen';
 import Login from './src/screen/Login';
-import Dashboard from './src/screen/Dashboard';
+import DashboardMain from './src/screen/DashboardMain';
 
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
-  Dashboard: undefined; // ✅ added
+  Dashboard: undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -20,7 +20,7 @@ const App = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         <Stack.Screen name="Splash" component={SplashScreen} />
         <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="Dashboard" component={DashboardMain} />
       </Stack.Navigator>
     </NavigationContainer>
   );
