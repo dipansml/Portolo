@@ -1,24 +1,15 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import SplashScreen from './src/screen/SplashScreen.tsx';
-import Login from './src/screen/Login.tsx';
-import Dashboard from './src/screen/Dashboard.tsx';
 
+import SplashScreen from './src/screen/SplashScreen';
+import Login from './src/screen/Login';
+import Dashboard from './src/screen/Dashboard';
 
 export type RootStackParamList = {
   Splash: undefined;
   Login: undefined;
-  Dashboard: undefined;
+  Dashboard: undefined; // ✅ added
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();

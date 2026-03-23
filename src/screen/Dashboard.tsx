@@ -1,25 +1,73 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Image } from 'react-native';
 
-const Dashboard: React.FC = () => {
+import HomeScreen from './HomeScreen';
+import TaskScreen from './TaskScreen';
+import AnalyticsScreen from './AnalyticsScreen';
+import SettingsScreen from './SettingsScreen';
+
+type DashboardParamList = {
+  Home: undefined;
+  Task: undefined;
+  Analytics: undefined;
+  Settings: undefined;
+};
+
+const Tab = createBottomTabNavigator<DashboardParamList>();
+
+const Dashboard = () => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World 👋</Text>
-    </View>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerShown: false,
+
+        // ✅ Custom Image Icon
+        tabBarIcon: ({ focused }) => {
+          let icon;
+
+          if (route.name === 'Home') {
+            icon = require('../assets/images/home.png');
+          } else if (route.name === 'Task') {
+            icon = require('../assets/images/task.png');
+          } else if (route.name === 'Analytics') {
+            icon = require('../assets/images/analytics.png');
+          } else if (route.name === 'Settings') {
+            icon = require('../assets/images/settings.png');
+          }
+
+          return (
+            <Image
+              source={icon}
+              style={{
+                width: 24,
+                height: 24,
+                resizeMode: 'contain',
+
+                // ✅ Change color on select
+                tintColor: focused ? '#E67515' : 'gray',
+              }}
+            />
+          );
+        },
+
+        // ✅ Label Color
+        tabBarActiveTintColor: '#E67515',
+        tabBarInactiveTintColor: 'gray',
+
+        // ✅ Custom Font
+        tabBarLabelStyle: {
+          fontFamily: 'segoe_bold',
+          fontSize: 10,
+        },
+      })}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Task" component={TaskScreen} />
+      <Tab.Screen name="Analytics" component={AnalyticsScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 };
 
 export default Dashboard;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center', // vertical center
-    alignItems: 'center',     // horizontal center
-    backgroundColor: '#FFFFFF',
-  },
-  text: {
-    fontSize: 20,
-    color: '#000',
-  },
-});
