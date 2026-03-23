@@ -8,12 +8,23 @@ import {View,
   ActivityIndicator,
   ImageBackground} from 'react-native';
   import { Dimensions } from 'react-native';
+  import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
   const screenWidth = Dimensions.get('window').width;
 
-  
+  type RootStackParamList = {
+  Dashboard: undefined;
+};
 
-const Login = () => {
+  type SplashProps = {
+    navigation: NativeStackNavigationProp<
+      RootStackParamList,
+      'Dashboard'
+    >;
+  };
+
+
+const Login = ({ navigation }: SplashProps) =>  {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -31,7 +42,8 @@ const Login = () => {
 
   const handleLogin = async () => {
   if (!validateLogin()) return;
-  console.log('login click')
+    console.log('login click')
+    navigation.replace('Dashboard');
  }
 
  
@@ -125,7 +137,7 @@ const Login = () => {
       </View>
      <View style={styles.container_horizontal_without_space}>
         <Text style={styles.errorText1}>
-          {errors.password || ' '}  {/* 👈 keeps space */}
+          {errors.password ? errors.password : ''} {/* 👈 keeps space */}
         </Text>
 
         <Text style={styles.forget_pass} onPress={forgotPassClick}>
@@ -167,13 +179,13 @@ const Login = () => {
         Terms of Use
       </Text>
 
-      <Text style={styles.separator}> • </Text>
+      <Text style={styles.separator}> {'\u2022'} </Text>
 
       <Text style={styles.link} onPress={() => openCms('siteMap')}>
         Site Map
       </Text>
 
-      <Text style={styles.separator}> • </Text>
+      <Text style={styles.separator}> {'\u2022'} </Text>
 
       <Text style={styles.link} onPress={() => openCms('privacy')}>
         Privacy Policy
@@ -216,8 +228,8 @@ const styles = StyleSheet.create({
 },
 
     banner: {
-    width: '100%',
-    height: 280, // 👈 control top banner height
+      width: '100%',
+      height: 280, // 👈 control top banner height
 },
 
     text: {
@@ -398,7 +410,7 @@ buttonIcon: {
   },
   separator: {
     color: '#48566A',
-    fontSize: 12,
+    fontSize: 20,
     marginHorizontal: 4,
   },
 
