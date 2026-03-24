@@ -5,7 +5,7 @@ import {  View,
           ScrollView,
           Image, 
           TouchableOpacity,
-           } from 'react-native';
+          ImageBackground, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'react-native';
 
@@ -48,6 +48,20 @@ return (
          <ScrollView contentContainerStyle={styles.scrollContent}>
           <Text style={styles.title}>Portolo Dashboard</Text>
           <Text style={styles.title1}>Status: Phase III Clinical Trial Active</Text>
+          <View style={[styles.horizontalViewMenu, { marginTop: 20 }, { marginRight: 5 }]}>
+            <ImageBackground
+              source={require('../assets/images/dashboard_menu.png')}
+              style={styles.containerMenu}
+              imageStyle={{ borderRadius: 20 }}
+            />
+            <ImageBackground
+              source={require('../assets/images/dashboard_menu.png')}
+              style={[styles.containerMenu, { marginLeft: 5 }]}
+              imageStyle={{ borderRadius: 20 }}
+            >
+            <Text style={styles.title1}>Dashboard</Text>
+            </ImageBackground>
+          </View>
          </ScrollView>
        </View>
       </SafeAreaView>
@@ -107,10 +121,18 @@ title: {
     padding: 16,
     marginTop: 10,
   },
+
+   horizontalViewMenu: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      marginTop: 5,
+},
+
+
   verticalView: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginLeft : 10,
     marginTop: 5,
   },
   image: {
@@ -169,5 +191,13 @@ notificationInside: {
   justifyContent: 'center',
   alignItems: 'center',
   elevation: 3, // Android shadow
+},
+ containerMenu: {
+  flex: 1,
+  height: 120,
+  borderRadius: 20,
+  overflow: 'hidden',
+  justifyContent: 'center', // 👈 vertical center
+  alignItems: 'center'
 },
 })
