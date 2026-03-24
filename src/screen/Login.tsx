@@ -62,7 +62,7 @@ const Login = ({ navigation }: SplashProps) =>  {
 };
 
   return (
-   <View style={styles.screen}>   {/* 👈 full screen wrapper */}
+   <View style={styles.screen}>
     
     {/* Top Banner */}
     <ImageBackground
