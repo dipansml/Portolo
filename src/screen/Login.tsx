@@ -9,6 +9,7 @@ import {View,
   ImageBackground} from 'react-native';
   import { Dimensions } from 'react-native';
   import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+  import { SafeAreaView } from 'react-native-safe-area-context';
 
   const screenWidth = Dimensions.get('window').width;
 

@@ -6,6 +6,7 @@ import HomeScreen from './HomeScreen';
 import TaskScreen from './TaskScreen';
 import AnalyticsScreen from './AnalyticsScreen';
 import SettingsScreen from './SettingsScreen';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type DashboardParamList = {
   Home: undefined;
@@ -17,10 +18,17 @@ type DashboardParamList = {
 const Tab = createBottomTabNavigator<DashboardParamList>();
 
 const DashboardMain = () => {
+  const insets = useSafeAreaInsets();
   return (
     <Tab.Navigator
       screenOptions={({ route }) => ({
         headerShown: false,
+
+         // ✅ Safe Area for Bottom Tab
+        tabBarStyle: {
+          paddingBottom: insets.bottom,   // 🔥 key line
+          height: 50 + insets.bottom,     // adjust height dynamically
+        },
 
         //Custom Image Icon
         tabBarIcon: ({ focused }) => {
