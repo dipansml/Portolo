@@ -23,7 +23,7 @@ return (
               source={ require('../assets/images/profile.png') }
               style={styles.image}
             />
-             <View style={styles.verticalView}>
+             <View style={[styles.verticalView, { marginLeft: 5 }]}>
                 <Text style={styles.role}>Clinical Lead</Text>
                 <Text style={styles.profileName}>Mr. Norman M. Goldfarb</Text>
              </View>
@@ -197,7 +197,7 @@ notificationInside: {
   height: 120,
   borderRadius: 20,
   overflow: 'hidden',
-  justifyContent: 'center', // 👈 vertical center
+  justifyContent: 'center', 
   alignItems: 'center'
 },
 })
