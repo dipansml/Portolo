@@ -51,16 +51,117 @@ return (
           <View style={[styles.horizontalViewMenu, { marginTop: 20 }, { marginRight: 5 }]}>
             <ImageBackground
               source={require('../assets/images/dashboard_menu.png')}
-              style={styles.containerMenu}
-              imageStyle={{ borderRadius: 20 }}
-            />
+              style={[styles.containerMenu, { marginRight: 2 }, {elevaton: 2}]}
+              imageStyle={{ borderRadius: 20 }}>
+              <View style={[styles.horizontalViewMenuInsideView]}>
+              <View style={styles.menuIconBack}>
+                  <Image
+                    source={require('../assets/images/message.png')}
+                    style={styles.menuIcon}
+                  />
+              </View>
+               <View style={[styles.menuTextBack, {height: 24}, {width: 40}]}>
+                  <Text style={[styles.text, { color: '#fff' }, { fontSize: 14 }, {fontFamily: 'segoe'}]}>
+                    New
+                  </Text>
+              </View>
+              </View>
+              <View style={[styles.menuInsideView]}>
+                <Text style={[styles.textMenuTitle1, { marginTop: 10 }]}>
+                    Messages
+                </Text>
+              </View>
+              <View style={[styles.horizontalViewMenuInsideViewWithoutPadding]}>
+                <Text style={[styles.textMenuTitle2]}>
+                    10
+                </Text>
+                 <Text style={[styles.textMenuTitle3]}>
+                    Unread
+                </Text>
+              </View>
+            </ImageBackground>
             <ImageBackground
               source={require('../assets/images/dashboard_menu.png')}
-              style={[styles.containerMenu, { marginLeft: 5 }]}
-              imageStyle={{ borderRadius: 20 }}
-            >
-            <Text style={styles.title1}>Dashboard</Text>
+              style={[styles.containerMenu, { marginLeft: 2 }, {elevaton: 2}]}
+              imageStyle={{ borderRadius: 20 }}>
+              <View style={[styles.menuIconBack, { margin: 10 }]}>
+                  <Image
+                    source={require('../assets/images/task.png')}
+                    style={[styles.menuIcon,  {tintColor: '#E67515'}]}
+                  />
+              </View>
+              <View style={[styles.menuInsideView]}>
+                <Text style={[styles.textMenuTitle1]}>
+                    Checklist
+                </Text>
+              </View>
+              <View style={[styles.horizontalViewMenuInsideViewWithoutPadding]}>
+                <Text style={[styles.textMenuTitle2]}>
+                    80%
+                </Text>
+                 <Text style={[styles.textMenuTitle3]}>
+                    +5%
+                </Text>
+              </View>
             </ImageBackground>
+          </View>
+          <View style={[styles.horizontalViewMenu, { marginTop: 8 }, { marginRight: 5 }]}>
+              <ImageBackground
+                  source={require('../assets/images/dashboard_menu.png')}
+                  style={[styles.containerMenu, { marginRight: 2 }, {elevaton: 2}]}
+                  imageStyle={{ borderRadius: 20 }}>
+                  <View style={[styles.menuIconBack, { margin: 10 }]}>
+                      <Image
+                        source={require('../assets/images/analytics.png')}
+                        style={[styles.menuIcon,  {tintColor: '#E67515'}]}
+                      />
+                  </View>
+                  <View style={[styles.menuInsideView]}>
+                    <Text style={[styles.textMenuTitle1]}>
+                        Performance
+                    </Text>
+                  </View>
+                  <View style={[styles.horizontalViewMenuInsideViewWithoutPadding]}>
+                    <Text style={[styles.textMenuTitle2]}>
+                        +12%
+                    </Text>
+                    <Text style={[styles.textMenuTitle3]}>
+                        Above Target
+                    </Text>
+                  </View>
+            </ImageBackground>
+            <ImageBackground
+                  source={require('../assets/images/dashboard_menu.png')}
+                  style={[styles.containerMenu, { marginLeft: 2 }, {elevaton: 2}]}
+                  imageStyle={{ borderRadius: 20 }}>
+                  <View style={[styles.menuIconBack, { margin: 10 }]}>
+                      <Image
+                        source={require('../assets/images/star.png')}
+                        style={[styles.menuIcon,  {tintColor: '#E67515'}]}
+                      />
+                  </View>
+                  <View style={[styles.menuInsideView]}>
+                    <Text style={[styles.textMenuTitle1]}>
+                        Ratings
+                    </Text>
+                  </View>
+                  <View style={[styles.horizontalViewMenuInsideViewWithoutPadding]}>
+                    <Text style={[styles.textMenuTitle2]}>
+                        4.8
+                    </Text>
+                    <Text style={[styles.textMenuTitle3]}>
+                        20 Participants
+                    </Text>
+                  </View>
+            </ImageBackground>
+          </View>
+          <View style={[styles.horizontalViewMenu, { marginTop: 20 }, { marginRight: 5 }]}>
+              <Text style={[styles.textTitle]}>
+                  Ongoing Stadies
+              </Text>
+              <Text style={[styles.textMenuTitle1, { marginRight: 5 }, { marginTop: 5 },{ fontSize: 14 }, { color: '#E67515' }]}>
+                  View All
+              </Text>
           </View>
          </ScrollView>
        </View>
@@ -129,12 +230,34 @@ title: {
       marginTop: 5,
 },
 
+horizontalViewMenuInsideView: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingHorizontal: 10,
+      marginTop: 10,
+},
+
+horizontalViewMenuInsideViewWithoutPadding: {
+      width: '100%',
+      flexDirection: 'row',
+      justifyContent: 'left',
+      alignItems: 'baseline',
+},
+
+menuInsideView: {
+      width: '100%',
+      justifyContent: 'space-between',
+      paddingHorizontal: 10,
+      marginTop: 10,
+},
 
   verticalView: {
     flexDirection: 'column',
     alignItems: 'flex-start',
     marginTop: 5,
   },
+
   image: {
     width: 60,
     height: 60,
@@ -197,7 +320,64 @@ notificationInside: {
   height: 120,
   borderRadius: 20,
   overflow: 'hidden',
-  justifyContent: 'center', 
-  alignItems: 'center'
+  justifyContent: 'top', 
+  alignItems: 'left'
 },
+  menuIconBack: {
+    width : 30,
+    height: 30,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center'
+},
+
+menuTextBack: {
+  paddingHorizontal: 2,
+  paddingVertical: 2,
+  backgroundColor: '#E67515',
+  borderRadius: 10,
+  justifyContent: 'center',
+  alignItems: 'center',
+},
+
+menuIcon: {
+    width: 16,
+    height: 16,
+    resizeMode: 'contain',
+},
+
+text: {
+    padding: 0,
+  },
+
+  textMenuTitle1: {
+    padding: 0,
+     color: '#48566A',
+     fontSize: 16,
+     fontFamily: 'segoe',
+  },
+
+  textMenuTitle2: {
+    color: '#000000',
+    fontSize: 20, 
+    fontFamily: 'segoe_bold',
+    marginLeft: 10,
+  },
+
+  textMenuTitle3: {
+    color: '#94A3B8',
+    fontSize: 12, 
+    fontFamily: 'segoe',
+    marginLeft: 5,
+    alignItems: 'flex-start',
+  },
+
+  textTitle: {
+     color: '#000',
+    fontSize: 18, 
+    fontFamily: 'segoe_bold',
+    marginLeft: 5,
+    alignItems: 'flex-start'
+  },
 })
