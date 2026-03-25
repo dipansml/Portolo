@@ -34,7 +34,20 @@
 		<true/>
 	</dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
+<<<<<<< HEAD
 	<string/>
+=======
+	<string></string>
+	<key>RCTNewArchEnabled</key>
+	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>segoe.ttf</string>
+		<string>segoe_bold.ttf</string>
+		<string>segoe_bold_italic.ttf</string>
+		<string>segoe_italic.ttf</string>
+	</array>
+>>>>>>> origin/nilanjan
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
@@ -54,6 +67,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+<<<<<<< HEAD
 	<key>UIAppFonts</key>
 	<array>
 		<string>segoe.ttf</string>
@@ -61,5 +75,7 @@
 		<string>segoe_bold_italic.ttf</string>
 		<string>segoe_italic.ttf</string>
 	</array>
+=======
+>>>>>>> origin/nilanjan
 </dict>
 </plist>

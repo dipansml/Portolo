@@ -15,12 +15,14 @@ import {View,
 
   type RootStackParamList = {
   Dashboard: undefined;
+  Signup: undefined
 };
 
   type SplashProps = {
     navigation: NativeStackNavigationProp<
       RootStackParamList,
-      'Dashboard'
+      'Dashboard',
+      'Signup'
     >;
   };
 
@@ -49,10 +51,10 @@ const Login = ({ navigation }: SplashProps) =>  {
 
  
 
- const handleSignup = async () => {
-  console.log('signup click')
- }
 
+const handleSignup = () => {
+  navigation.navigate('Signup');
+};
 
  const openCms = (text: string) => {
   console.log(text)
@@ -98,7 +100,6 @@ const Login = ({ navigation }: SplashProps) =>  {
       </View>
 
       {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
-      
     </View>
 
     <Text style={styles.input_header}>Password</Text>
@@ -139,6 +140,7 @@ const Login = ({ navigation }: SplashProps) =>  {
      <View style={styles.container_horizontal_without_space}>
         <Text style={styles.errorText1}>
           {errors.password ? errors.password : ''} {/* 👈 keeps space */}
+
         </Text>
 
         <Text style={styles.forget_pass} onPress={forgotPassClick}>
