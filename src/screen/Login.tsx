@@ -7,7 +7,7 @@ import {View,
   Image,
   ActivityIndicator,
   ImageBackground,
-  Platform} from 'react-native';
+  ScrollView} from 'react-native';
   import { Dimensions } from 'react-native';
   import { NativeStackNavigationProp } from '@react-navigation/native-stack';
   import { SafeAreaView } from 'react-native-safe-area-context';
@@ -22,7 +22,8 @@ import {View,
   type SplashProps = {
     navigation: NativeStackNavigationProp<
       RootStackParamList,
-      'Dashboard','Signup'
+      'Dashboard',
+      'Signup'
     >;
   };
 
@@ -51,11 +52,10 @@ const Login = ({ navigation }: SplashProps) =>  {
 
  
 
+
 const handleSignup = () => {
   navigation.navigate('Signup');
 };
-
-
 
  const openCms = (text: string) => {
   console.log(text)
@@ -67,28 +67,27 @@ const handleSignup = () => {
 
   return (
    <View style={styles.screen}>
-    
     {/* Top Banner */}
     <ImageBackground
       source={require('../assets/images/login_banner.png')}
       style={styles.banner}
       resizeMode="cover"
     />
-
     {/* Content */}
     <View style={styles.container}>
+      <ScrollView 
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}>
       <FullScreenLoader visible={loading} />
       <Text style={styles.title}>Welcome Back</Text>
       <Text style={styles.title_normal}>Integrated Intelligence for Clinical Research</Text>
       <Text style={styles.input_header}>Email Address</Text>
-  
       <View style={styles.inputContainer}>
       <View style={styles.inputWrapper}>
         <Image
           source={require('../assets/images/ic_email.png')}
           style={styles.icon}
         />
-
         <TextInput
           style={[styles.input, errors.email && styles.errorInput]}
           placeholder="name@institution.edu"
@@ -99,10 +98,8 @@ const handleSignup = () => {
           }}
         />
       </View>
-
       {errors.email && <Text style={styles.errorText}>{errors.email}</Text>}
     </View>
-
     <Text style={styles.input_header}>Password</Text>
       <View style={styles.inputContainer}>
       <View style={styles.inputWrapper}>
@@ -110,7 +107,6 @@ const handleSignup = () => {
           source={require('../assets/images/ic_password.png')}
           style={styles.icon}
         />
-
         <TextInput
           style={[styles.input, errors.password && styles.errorInput]}
           placeholder="******"
@@ -140,9 +136,8 @@ const handleSignup = () => {
       </View>
      <View style={styles.container_horizontal_without_space}>
         <Text style={styles.errorText1}>
-          {errors.password ? errors.password : ''} 
+          {errors.password ? errors.password : ''} {/* 👈 keeps space */}
         </Text>
-
         <Text style={styles.forget_pass} onPress={forgotPassClick}>
           Forgot Password?
         </Text>
@@ -154,21 +149,19 @@ const handleSignup = () => {
             >
               <View style={styles.buttonContent}>
                 <Text style={styles.buttonText}>Sign In</Text>
-
                 <Image
                   source={require('../assets/images/arrow_right.png')}
                   style={styles.buttonIcon}
                 />
               </View>
             </TouchableOpacity>
-
             <View style={styles.container_horizontal}>
                 <View style={styles.line} />
                 <Text style={styles.text}>New to Portolo?</Text>
                 <View style={styles.line} />
             </View>
              <TouchableOpacity
-               style={[styles.button_border, loading && { opacity: 0.7 }]}
+              style={[styles.button_border, loading && { opacity: 0.7 }]}
               onPress={handleSignup}
               disabled={loading}
             >
@@ -181,19 +174,16 @@ const handleSignup = () => {
       <Text style={styles.link} onPress={() => openCms('TermsOfUse')}>
         Terms of Use
       </Text>
-
       <Text style={styles.separator}> {'\u2022'} </Text>
-
       <Text style={styles.link} onPress={() => openCms('siteMap')}>
         Site Map
       </Text>
-
       <Text style={styles.separator}> {'\u2022'} </Text>
-
       <Text style={styles.link} onPress={() => openCms('privacy')}>
         Privacy Policy
       </Text>
     </View>
+    </ScrollView>
     </View>
   </View>
   );
@@ -202,7 +192,6 @@ const handleSignup = () => {
 export default Login;
 
  
-
 const FullScreenLoader = ({ visible }: { visible: boolean }) => {
   if (!visible) return null;
 
@@ -216,8 +205,8 @@ const FullScreenLoader = ({ visible }: { visible: boolean }) => {
 
 const styles = StyleSheet.create({
     screen: {
-    flex: 1,
-    backgroundColor: '#FFFFFF', // 👈 full screen background color
+      flex: 1,
+      backgroundColor: '#FFFFFF',
 },
     container: {
     flex: 1,
@@ -227,12 +216,16 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 20,
     borderRadius: 20,
-    marginTop:-30,
+    marginTop:'-60%',
 },
+
+scrollContent: {
+    padding: 0,
+  },
 
     banner: {
       width: '100%',
-      height: 280, // 👈 control top banner height
+      height: '60%',
 },
 
     text: {
@@ -398,6 +391,7 @@ buttonIcon: {
   container_horizontal1: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 20,
   },
