@@ -7,16 +7,14 @@ import {  View,
           TouchableOpacity,
           ImageBackground, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { StatusBar } from 'react-native';
+import OngoingStudiesList from '../components/OngoingStudiesList';
 
 const HomeScreen = () => {
 return (
   <View style={styles.root}>
-
   <SafeAreaView edges={['top']} />
-      {/* Main content */}
       <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
-       <View style={styles.topRoundedBox}> 
+        <View style={styles.topRoundedBox}> 
         <View style={styles.horizontalView}>
         <View style={{ flexDirection: 'row' }}>
             <Image
@@ -43,15 +41,17 @@ return (
           </TouchableOpacity>
           </View>
         </View>
-      </View>;
+      </View>
        <View style={styles.container}>
-         <ScrollView contentContainerStyle={styles.scrollContent}>
+         <ScrollView 
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}>
           <Text style={styles.title}>Portolo Dashboard</Text>
           <Text style={styles.title1}>Status: Phase III Clinical Trial Active</Text>
           <View style={[styles.horizontalViewMenu, { marginTop: 20 }, { marginRight: 5 }]}>
             <ImageBackground
               source={require('../assets/images/dashboard_menu.png')}
-              style={[styles.containerMenu, { marginRight: 2 }, {elevaton: 2}]}
+              style={[styles.containerMenu, { marginRight: 2 }]}
               imageStyle={{ borderRadius: 20 }}>
               <View style={[styles.horizontalViewMenuInsideView]}>
               <View style={styles.menuIconBack}>
@@ -82,7 +82,7 @@ return (
             </ImageBackground>
             <ImageBackground
               source={require('../assets/images/dashboard_menu.png')}
-              style={[styles.containerMenu, { marginLeft: 2 }, {elevaton: 2}]}
+              style={[styles.containerMenu, { marginLeft: 2 }]}
               imageStyle={{ borderRadius: 20 }}>
               <View style={[styles.menuIconBack, { margin: 10 }]}>
                   <Image
@@ -108,7 +108,7 @@ return (
           <View style={[styles.horizontalViewMenu, { marginTop: 8 }, { marginRight: 5 }]}>
               <ImageBackground
                   source={require('../assets/images/dashboard_menu.png')}
-                  style={[styles.containerMenu, { marginRight: 2 }, {elevaton: 2}]}
+                  style={[styles.containerMenu, { marginRight: 2 }]}
                   imageStyle={{ borderRadius: 20 }}>
                   <View style={[styles.menuIconBack, { margin: 10 }]}>
                       <Image
@@ -132,7 +132,7 @@ return (
             </ImageBackground>
             <ImageBackground
                   source={require('../assets/images/dashboard_menu.png')}
-                  style={[styles.containerMenu, { marginLeft: 2 }, {elevaton: 2}]}
+                  style={[styles.containerMenu, { marginLeft: 2 }]}
                   imageStyle={{ borderRadius: 20 }}>
                   <View style={[styles.menuIconBack, { margin: 10 }]}>
                       <Image
@@ -163,6 +163,10 @@ return (
                   View All
               </Text>
           </View>
+          <View style={styles.list}>
+            <OngoingStudiesList/>
+          </View>
+          {/* <OngoingStudiesList data={yourApiData}/> */}
          </ScrollView>
        </View>
       </SafeAreaView>
@@ -175,11 +179,10 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    //backgroundColor: '#E67515', // 👈 FULL window color (status bar included)
   },
   screen: {
     flex: 1,
-    backgroundColor: '#F8F7F5', // 👈 your content area
+    backgroundColor: '#F8F7F5',
   },
   topRoundedBox: {
     height: 200,
@@ -192,19 +195,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F7F5',
     alignItems: 'flex-start', 
     justifyContent: 'flex-start',
-    margin: 16,
+    marginLeft: 10,
+    marginRight: 10,
+    marginTop:-80,
     borderRadius: 30,
-    marginTop:-90,
+    padding: 10,
 },
 scrollContent: {
-    padding: 16,
+    padding: 0,
   },
 title: {
         fontSize: 20,
         textAlign: 'left',
         width: '100%',
         marginBottom: 5,
-        marginTop: 5,
+        marginLeft: 5,
+        marginTop: 10,
         color: '#000000',
         fontFamily: 'segoe_bold',
   },  
@@ -214,13 +220,14 @@ title: {
         width: '100%',
         color: '#48566A',
         fontFamily: 'segoe',
+        marginLeft: 5,
   },  
 
   horizontalView: {
     flexDirection: 'row',
     alignItems: 'flex-start',
     padding: 16,
-    marginTop: 10,
+    marginTop: 30,
   },
 
    horizontalViewMenu: {
@@ -241,7 +248,7 @@ horizontalViewMenuInsideView: {
 horizontalViewMenuInsideViewWithoutPadding: {
       width: '100%',
       flexDirection: 'row',
-      justifyContent: 'left',
+      justifyContent: 'flex-start',
       alignItems: 'baseline',
 },
 
@@ -320,8 +327,8 @@ notificationInside: {
   height: 120,
   borderRadius: 20,
   overflow: 'hidden',
-  justifyContent: 'top', 
-  alignItems: 'left'
+  justifyContent: 'flex-start', 
+  alignItems: 'flex-start'
 },
   menuIconBack: {
     width : 30,
@@ -354,13 +361,13 @@ text: {
   textMenuTitle1: {
     padding: 0,
      color: '#48566A',
-     fontSize: 16,
+     fontSize: 14,
      fontFamily: 'segoe',
   },
 
   textMenuTitle2: {
     color: '#000000',
-    fontSize: 20, 
+    fontSize: 18, 
     fontFamily: 'segoe_bold',
     marginLeft: 10,
   },
@@ -378,6 +385,10 @@ text: {
     fontSize: 18, 
     fontFamily: 'segoe_bold',
     marginLeft: 5,
-    alignItems: 'flex-start'
+  },
+
+  list: {
+    padding: 0,
+    marginTop: 20,
   },
 })
