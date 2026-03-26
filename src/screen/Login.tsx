@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {View,
   Text,
   TextInput,
@@ -7,12 +7,10 @@ import {View,
   Image,
   ActivityIndicator,
   ImageBackground,
-  ScrollView} from 'react-native';
-  import { Dimensions } from 'react-native';
+  ScrollView,
+  Platform } from 'react-native';
   import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-  import { SafeAreaView } from 'react-native-safe-area-context';
 
-  const screenWidth = Dimensions.get('window').width;
 
   type RootStackParamList = {
   Dashboard: undefined;
@@ -232,7 +230,7 @@ scrollContent: {
         marginHorizontal: 10,
         fontSize: 14,
         color: '#48566A',
-    fontFamily: 'SegoeUI-Semibold',
+        fontFamily: 'SegoeUI-Semibold',
 },
 
     title: {
@@ -256,7 +254,7 @@ scrollContent: {
         textAlign: 'left',
         marginBottom: 5,
         color: '#48566A',
-  fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
+        fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
         width: '100%'
   },
  

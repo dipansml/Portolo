@@ -5,7 +5,8 @@ import {  View,
           ScrollView,
           Image, 
           TouchableOpacity,
-          ImageBackground, } from 'react-native';
+          ImageBackground, 
+          Platform ,} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OngoingStudiesList from '../components/OngoingStudiesList';
 import { StudyItemType } from '../components/OngoingStudiesList';
@@ -13,7 +14,6 @@ import { StudyItemType } from '../components/OngoingStudiesList';
 const HomeScreen = () => {
 return (
   <View style={styles.root}>
-  <SafeAreaView edges={['top']} />
       <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
         <View style={styles.topRoundedBox}> 
         <View style={styles.horizontalView}>
@@ -40,7 +40,6 @@ return (
             </View>
           </View>
         </View>
-      </View>
        <View style={styles.container}>
          <ScrollView 
             contentContainerStyle={styles.scrollContent}
@@ -186,7 +185,6 @@ const styles = StyleSheet.create({
   },
   screen: {
     flex: 1,
-    backgroundColor: '#F8F7F5',
     backgroundColor: '#F8F7F5',
   },
   topRoundedBox: {
