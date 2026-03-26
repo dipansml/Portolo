@@ -6,7 +6,8 @@ import {View,
   StyleSheet,
   Image,
   ActivityIndicator,
-  ImageBackground} from 'react-native';
+  ImageBackground,
+  Platform} from 'react-native';
   import { Dimensions } from 'react-native';
   import { NativeStackNavigationProp } from '@react-navigation/native-stack';
   import { SafeAreaView } from 'react-native-safe-area-context';
@@ -238,7 +239,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 10,
         fontSize: 14,
         color: '#48566A',
-        fontFamily: 'segoe_semibold',
+    fontFamily: 'SegoeUI-Semibold',
 },
 
     title: {
@@ -247,14 +248,14 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginBottom: 10,
         color: '#000000',
-        fontFamily: 'segoe_bold',
+        fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
   },
   title_normal: {
         fontSize: 12,
         textAlign: 'center',
         marginBottom: 20,
         color: '#48566A',
-        fontFamily: 'segoe',
+    fontFamily: 'SegoeUI',
   },
 
   input_header: {
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         marginBottom: 5,
         color: '#48566A',
-        fontFamily: 'segoe_bold',
+  fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
         width: '100%'
   },
  
@@ -299,7 +300,7 @@ const styles = StyleSheet.create({
     flex: 1,
     borderColor: "#00000000",
     paddingVertical: 12,
-    fontFamily: "segoe",
+  fontFamily: "SegoeUI",
     color: '#000',
 },
 
@@ -365,7 +366,7 @@ buttonContent: {
 buttonText: {
   color: '#fff',
   fontSize: 14,
-  fontFamily: 'segoe_bold',
+  fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
   textAlignVertical: 'center', // 👈 Android fix
 },
 
@@ -373,7 +374,7 @@ buttonText: {
 buttonText_black: {
   color: '#000',
   fontSize: 14,
-  fontFamily: 'segoe_bold',
+  fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
   textAlignVertical: 'center', // 👈 Android fix
 },
 
@@ -408,7 +409,7 @@ buttonIcon: {
   link: {
     color: '#48566A',
     fontSize: 12,
-    fontFamily: "segoe_bold"
+    fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold'
   },
   separator: {
     color: '#48566A',
@@ -429,7 +430,7 @@ errorText1: {
   flex: 1,          // 👈 reserves space always
   marginRight: 10,
   marginTop:5,
-  fontFamily: "segoe",
+  fontFamily: "SegoeUI",
 },
 
 errorText: { 
@@ -437,13 +438,13 @@ errorText: {
    marginTop: 4,
    fontSize: 12,
    flexWrap: 'wrap',
-   fontFamily: "segoe",
+  fontFamily: "SegoeUI",
   },
 
 forget_pass: {
   fontSize: 12,
   color: '#E67515',
-  fontFamily: 'segoe_bold',
+  fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
   marginTop:5,
 },
 });
