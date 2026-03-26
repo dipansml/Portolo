@@ -64,7 +64,7 @@ const StudyItem : React.FC<StudyItemProps> = ({ item, index, onPress  }) => {
     <TouchableOpacity
       style={styles.card}
       onPress={() => onPress?.(item, index)}
-      activeOpacity={0.7}>
+      activeOpacity={0.4}>
       <Image source={item.image} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.title}>{item.title}</Text>
