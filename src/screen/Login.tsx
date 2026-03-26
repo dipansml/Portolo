@@ -200,8 +200,8 @@ const FullScreenLoader = ({ visible }: { visible: boolean }) => {
 
 const styles = StyleSheet.create({
     screen: {
-    flex: 1,
-    backgroundColor: '#FFFFFF', // 👈 full screen background color
+      flex: 1,
+      backgroundColor: '#FFFFFF',
 },
     container: {
     flex: 1,
@@ -211,12 +211,12 @@ const styles = StyleSheet.create({
     padding: 10,
     margin: 20,
     borderRadius: 20,
-    marginTop:-30,
+    marginTop:'-60%',
 },
 
     banner: {
       width: '100%',
-      height: 280, // 👈 control top banner height
+      height: '60%',
 },
 
     text: {
