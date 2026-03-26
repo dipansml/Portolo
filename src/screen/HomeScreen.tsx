@@ -8,6 +8,7 @@ import {  View,
           ImageBackground, } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import OngoingStudiesList from '../components/OngoingStudiesList';
+import { StudyItemType } from '../components/OngoingStudiesList';
 
 const HomeScreen = () => {
 return (
@@ -164,7 +165,12 @@ return (
               </Text>
           </View>
           <View style={styles.list}>
-            <OngoingStudiesList/>
+            <OngoingStudiesList 
+              onItemPress={(item: StudyItemType, index: number) => {
+                console.log('Clicked index:', index);
+                console.log('Item:', item);
+              }}
+            />
           </View>
           {/* <OngoingStudiesList data={yourApiData}/> */}
          </ScrollView>

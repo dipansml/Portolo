@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, Image } from 'react-native';
+import { View, Text, StyleSheet, FlatList, Image, TouchableOpacity  } from 'react-native';
 
 const DATA = [
   {
@@ -42,11 +42,30 @@ const DATA = [
   },
 ];
 
-const StudyItem = ({ item }) => {
-  return (
-    <View style={styles.card}>
-      <Image source={item.image} style={styles.image} />
+type StudyItemProps = {
+  item: StudyItemType;
+  index: number;
+  onPress?: (item: StudyItemType, index: number) => void;
+};
 
+export type StudyItemType = {
+  id: string;
+  title: string;
+  participants: string;
+  value: string;
+  label: string;
+  positive: boolean;
+  image: any;
+};
+
+
+const StudyItem : React.FC<StudyItemProps> = ({ item, index, onPress  }) => {
+  return (
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => onPress?.(item, index)}
+      activeOpacity={0.7}>
+      <Image source={item.image} style={styles.image} />
       <View style={styles.info}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.subtitle}>{item.participants}</Text>
@@ -63,17 +82,23 @@ const StudyItem = ({ item }) => {
         </Text>
         <Text style={styles.label}>{item.label}</Text>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
-const OngoingStudiesList = () => {
+const OngoingStudiesList = ({ onItemPress } : any) => {
   return (
     <FlatList
       data={DATA}
       keyExtractor={(item) => item.id}
-      renderItem={({ item }) => <StudyItem item={item} />}
-      scrollEnabled={false} // IMPORTANT (inside ScrollView)
+      renderItem={({ item, index }) => (
+        <StudyItem 
+          item={item}
+          index={index}
+          onPress={onItemPress}
+        />
+      )}
+      scrollEnabled={false}
     />
   );
 };
