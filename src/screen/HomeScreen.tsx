@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F8F7F5',
   },
   topRoundedBox: {
-    height: 200,
+    height: '30%',
     backgroundColor: '#E67515',
     borderBottomLeftRadius: 40,
     borderBottomRightRadius: 40,
@@ -203,7 +203,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     marginLeft: 10,
     marginRight: 10,
-    marginTop:-80,
+    marginTop:'-25%',
     borderRadius: 30,
     padding: 10,
 },
@@ -232,7 +232,7 @@ title: {
   horizontalView: {
     flexDirection: 'row',
     alignItems: 'flex-start',
-    padding: 16,
+    padding: 12,
     marginTop: 30,
   },
 

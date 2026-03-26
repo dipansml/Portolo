@@ -6,7 +6,8 @@ import {View,
   StyleSheet,
   Image,
   ActivityIndicator,
-  ImageBackground} from 'react-native';
+  ImageBackground,
+  ScrollView} from 'react-native';
   import { Dimensions } from 'react-native';
   import { NativeStackNavigationProp } from '@react-navigation/native-stack';
   import { SafeAreaView } from 'react-native-safe-area-context';
@@ -74,6 +75,9 @@ const handleSignup = () => {
     />
     {/* Content */}
     <View style={styles.container}>
+      <ScrollView 
+          contentContainerStyle={styles.scrollContent}
+          showsVerticalScrollIndicator={false}>
       <FullScreenLoader visible={loading} />
       <Text style={styles.title}>Welcome Back</Text>
       <Text style={styles.title_normal}>Integrated Intelligence for Clinical Research</Text>
@@ -179,6 +183,7 @@ const handleSignup = () => {
         Privacy Policy
       </Text>
     </View>
+    </ScrollView>
     </View>
   </View>
   );
@@ -213,6 +218,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop:'-60%',
 },
+
+scrollContent: {
+    padding: 0,
+  },
 
     banner: {
       width: '100%',
@@ -382,6 +391,7 @@ buttonIcon: {
   container_horizontal1: {
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'center',
     marginTop: 10,
     marginBottom: 20,
   },
