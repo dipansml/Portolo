@@ -25,21 +25,19 @@ return (
              <View style={[styles.verticalView, { marginLeft: 5 }]}>
                 <Text style={styles.role}>Clinical Lead</Text>
                 <Text style={styles.profileName}>Mr. Norman M. Goldfarb</Text>
-             </View>
-          </View>
-          <View style={styles.notification}>
-          <TouchableOpacity
-            activeOpacity={2} 
-            style={styles.notificationInside}
-            onPress={() => console.log('Notifications clicked')}>
-            <Image
-              source={require('../assets/images/notification.png')}
-              style={styles.notificationIcon}
-            />
-            {/* Badge */}
-            <View style={styles.badge}>
+              </View>
             </View>
-          </TouchableOpacity>
+            <View style={styles.notification}>
+              <TouchableOpacity
+                activeOpacity={0.8}
+                style={styles.notificationInside}
+                onPress={() => console.log('Notifications clicked')}
+              >
+                <Image source={require('../assets/images/notification.png')} style={styles.notificationIcon} />
+                {/* Badge */}
+                <View style={styles.badge} />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
       </View>
@@ -189,6 +187,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: '#F8F7F5',
+    backgroundColor: '#F8F7F5',
   },
   topRoundedBox: {
     height: '30%',
@@ -199,7 +198,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8F7F5',
-    alignItems: 'flex-start', 
+    alignItems: 'flex-start',
     justifyContent: 'flex-start',
     marginLeft: 10,
     marginRight: 10,
@@ -277,27 +276,26 @@ menuInsideView: {
     borderRadius: 30,
     borderColor: '#fff',
     borderWidth: 1,
-    
   },
-  role : {
-        fontSize: 14,
-        textAlign: 'left',
-        width: '100%',
-        color: '#fff',
-        fontFamily: 'segoe',
-  },  
-  profileName : {
-        fontSize: 16,
-        textAlign: 'left',
-        width: '100%',
-        color: '#fff',
-        fontFamily: 'segoe_bold',
-  },  
+  role: {
+    fontSize: 14,
+    textAlign: 'left',
+    width: '100%',
+    color: '#fff',
+    fontFamily: 'SegoeUI',
+  },
+  profileName: {
+    fontSize: 16,
+    textAlign: 'left',
+    width: '100%',
+    color: '#fff',
+    fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
+  },
   notification: {
-    width : 30,
+    width: 30,
     height: 30,
     backgroundColor: '#FFFFFF',
-    marginLeft: 'auto', //pushes to right
+    marginLeft: 'auto',
     borderRadius: 6,
     marginRight: 10,
 },

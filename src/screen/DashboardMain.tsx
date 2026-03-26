@@ -63,7 +63,7 @@ const DashboardMain = () => {
 
         // ✅ Custom Font
         tabBarLabelStyle: {
-          fontFamily: 'segoe',
+          fontFamily: 'SegoeUI',
           fontSize: 11,
         },
       })}
