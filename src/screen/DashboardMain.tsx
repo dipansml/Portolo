@@ -3,16 +3,18 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Image } from 'react-native';
 
 import HomeScreen from './HomeScreen';
-import TaskScreen from './TaskScreen';
-import AnalyticsScreen from './AnalyticsScreen';
-import SettingsScreen from './SettingsScreen';
+import AboutUs from './AboutUs';
+import ContactUs from './ContactUs';
+import Resources from './Resources';
+import Support from './Support'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type DashboardParamList = {
   Home: undefined;
-  Task: undefined;
-  Analytics: undefined;
-  Settings: undefined;
+  Resources: undefined;
+  AboutUs: undefined;
+  ContactUs: undefined;
+  Support: undefined;
 };
 
 const Tab = createBottomTabNavigator<DashboardParamList>();
@@ -27,7 +29,9 @@ const DashboardMain = () => {
          // ✅ Safe Area for Bottom Tab
         tabBarStyle: {
           paddingBottom: insets.bottom,   // 🔥 key line
-          height: 50 + insets.bottom,     // adjust height dynamically
+          height: 54 + insets.bottom,     // adjust height dynamically
+          borderTopStartRadius: 20,
+          borderTopEndRadius: 20,
         },
 
         //Custom Image Icon
@@ -36,12 +40,14 @@ const DashboardMain = () => {
 
           if (route.name === 'Home') {
             icon = require('../assets/images/home.png');
-          } else if (route.name === 'Task') {
-            icon = require('../assets/images/task.png');
-          } else if (route.name === 'Analytics') {
-            icon = require('../assets/images/analytics.png');
-          } else if (route.name === 'Settings') {
-            icon = require('../assets/images/settings.png');
+          } else if (route.name === 'Resources') {
+            icon = require('../assets/images/ic_resources.png');
+          } else if (route.name === 'AboutUs') {
+            icon = require('../assets/images/ic_aboutus.png');
+          } else if (route.name === 'ContactUs') {
+            icon = require('../assets/images/ic_contactus.png');
+          } else if (route.name === 'Support') {
+            icon = require('../assets/images/ic_support.png');
           }
           return (
             <Image
@@ -50,6 +56,7 @@ const DashboardMain = () => {
                 width: 20,
                 height: 20,
                 resizeMode: 'contain',
+                margin:1,
                 //Change color on select
                 tintColor: focused ? '#E67515' : 'gray',
               }}
@@ -69,9 +76,10 @@ const DashboardMain = () => {
       })}
     >
       <Tab.Screen name="Home" component={HomeScreen} />
-      <Tab.Screen name="Task" component={TaskScreen} />
-      <Tab.Screen name="Analytics" component={AnalyticsScreen} />
-      <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Screen name="Resources" component={Resources} />
+      <Tab.Screen name="AboutUs" component={AboutUs} options={{tabBarLabel : 'About Us'}}/>
+      <Tab.Screen name="ContactUs" component={ContactUs}  options={{tabBarLabel : 'Contact Us'}}/>
+      <Tab.Screen name="Support" component={Support} />
     </Tab.Navigator>
   );
 };

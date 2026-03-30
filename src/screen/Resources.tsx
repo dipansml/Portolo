@@ -1,12 +1,12 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
-const AnalyticsScreen = () => {
+const Resources = () => {
   return (
     <View>
-      <Text>Analytics Screen</Text>
+      <Text>Resources Screen</Text>
     </View>
   );
 };
 
-export default AnalyticsScreen;
+export default Resources;
