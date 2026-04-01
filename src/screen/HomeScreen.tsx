@@ -6,7 +6,7 @@ import {  View,
 import { SafeAreaView } from 'react-native-safe-area-context';
 import CommonHeader  from '../components/CommonHeader';
 
-const HomeScreen = () => {
+const HomeScreen = ( { navigation }: any ) => {
 return (
   <View style={styles.root}>
       <SafeAreaView style={styles.screen} edges={['left', 'right', 'bottom']}>
@@ -14,7 +14,7 @@ return (
           <CommonHeader
             title="Home"
             showLogo={true}
-            onMenuPress={() => console.log('menu press')}/>
+            onMenuPress={() => navigation.openDrawer()}/>
         </View>
        <View style={styles.container}>
          <ScrollView 

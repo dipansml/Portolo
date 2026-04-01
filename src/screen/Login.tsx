@@ -14,7 +14,8 @@ import {View,
 
   type RootStackParamList = {
   Dashboard: undefined;
-  Signup: undefined
+  Signup: undefined,
+  DrawerNavigator: undefined,
 };
 
   type SplashProps = {
@@ -45,7 +46,8 @@ const Login = ({ navigation }: SplashProps) =>  {
   const handleLogin = async () => {
   if (!validateLogin()) return;
     console.log('login click')
-    navigation.replace('Dashboard');
+    //navigation.replace('Dashboard');
+    navigation.replace('DrawerNavigator');
  }
 
  
