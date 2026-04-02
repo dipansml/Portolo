@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   title: {
-    fontSize: 18,
+    fontSize: 16,
      fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
   },
   logo: {

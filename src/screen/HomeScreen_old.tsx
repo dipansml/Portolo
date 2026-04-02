@@ -360,7 +360,7 @@ text: {
     padding: 0,
   },
 
-  textMenuTitle1: {
+textMenuTitle1: {
     padding: 0,
      color: '#48566A',
      fontSize: 14,

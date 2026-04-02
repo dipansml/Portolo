@@ -1,27 +1,34 @@
 // components/CustomDrawer.tsx
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, Image, Platform,
-         ScrollView 
+         ScrollView, 
  } from 'react-native';
+ import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function CustomDrawer(props: any) {
   const { navigation } = props;
   const [activeItem, setActiveItem] = useState('Dashboard');
 
   return (
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#fff' }} >
       <View style={{flex: 1, backgroundColor: '#fff'  }}>
       {/* 🔥 FIXED HEADER (will NOT scroll) */}
       <View style={styles.header}>
-        <Image
-          source={require('../assets/images/profile.png')}
-          style={styles.avatar}
-        />
-        <View style={styles.headerContent}>
-          <Text style={styles.name}>Mr. Norman M. Goldfarb</Text>
-          <Text style={styles.role}>Clinical Lead</Text>
+        <View  style={styles.userDetail}>
+          <View style={styles.user_image_container}>
+            <Image
+              source={require('../assets/images/profile.png')}
+              style={styles.avatar}
+            />
+            <View style={styles.badge} />
+          </View>
+          <View style={styles.headerContent}>
+            <Text style={styles.name}>Mr. Norman M. Goldfarb</Text>
+            <Text style={styles.role}>Clinical Lead</Text>
+            <Text style={styles.role1}>System Administrator</Text>
+          </View>
         </View>
       </View>
-
       {/* 🔥 SCROLLABLE CONTENT */}
       <View style={{ flex: 1 }}>
         <ScrollView
@@ -55,7 +62,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('Subscriptions');
                 navigation.navigate('Subscriptions');
               }}>
-            <Text style={styles.item}>Subscriptions</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'Subscriptions' && styles.activeItemText
+                    ]}>Subscriptions</Text>
         </TouchableOpacity>
         <TouchableOpacity
             style={[
@@ -66,7 +77,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('SystemAnalytics');
                 navigation.navigate('SystemAnalytics');
               }}>
-            <Text style={styles.item}>SystemAnalytics</Text>
+             <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'SystemAnalytics' && styles.activeItemText
+                    ]}>SystemAnalytics</Text>
         </TouchableOpacity>
         <TouchableOpacity
             style={[
@@ -77,7 +92,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('Announcements');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>System Announcements & Notifications</Text>
+             <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'Announcements' && styles.activeItemText
+                    ]}>System Announcements & Notifications</Text>
         </TouchableOpacity>  
         <TouchableOpacity
             style={[
@@ -88,7 +107,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('BusinessCalender');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>System Business Calendar</Text>
+              <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'BusinessCalender' && styles.activeItemText
+                    ]}>System Business Calendar</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -99,7 +122,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('SystemCheckList');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>System Checklist</Text>
+              <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'SystemCheckList' && styles.activeItemText
+                    ]}>System Checklist</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -110,7 +137,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('SystemConfigaration');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>System Configuration</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'SystemConfigaration' && styles.activeItemText
+                    ]}>System Configuration</Text>
         </TouchableOpacity> 
         <View style = {styles.divider}/> 
       {/* LIBRARIES HEADER */} 
@@ -124,7 +155,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('AnnouncementLibrary');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Announcement Library</Text>
+             <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'AnnouncementLibrary' && styles.activeItemText
+                    ]}>Announcement Library</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -135,7 +170,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('SurveyTemplateLibraries');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Form & Survey Template Libraries</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'SurveyTemplateLibraries' && styles.activeItemText
+                    ]}>Form & Survey Template Libraries</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -146,7 +185,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('ForumLibrary');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Forum Library</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'ForumLibrary' && styles.activeItemText
+                    ]}>Forum Library</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -157,7 +200,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('OrganizationChartLibrary');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Organization Chart Library</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'OrganizationChartLibrary' && styles.activeItemText
+                    ]}>Organization Chart Library</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -168,7 +215,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('ProcessReceiverLibrary');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Process Receiver Library</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'ProcessReceiverLibrary' && styles.activeItemText
+                    ]}>Process Receiver Library</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -179,7 +230,11 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('ProcessTemplateLibrary');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Process Template Library</Text>
+            <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'ProcessTemplateLibrary' && styles.activeItemText
+                    ]}>Process Template Library</Text>
         </TouchableOpacity> 
         <TouchableOpacity
             style={[
@@ -190,11 +245,26 @@ export default function CustomDrawer(props: any) {
                 setActiveItem('ReportLibrary');
                 navigation.navigate('Announcements');
               }}>
-            <Text style={styles.item}>Report Library</Text>
+             <Text 
+                style={[
+                      styles.item,
+                      activeItem === 'ReportLibrary' && styles.activeItemText
+                    ]}>Report Library</Text>
         </TouchableOpacity> 
+
+        <TouchableOpacity  
+            style = {styles.horizontalView}
+            onPress={() => {navigation.replace('Login')}}>
+          <Image
+            source={require('../assets/images/logout.png')}
+            style={styles.logout}
+          />
+        <Text style={styles.logoutText}>Sign out</Text>
+        </TouchableOpacity>
         </ScrollView>
       </View>
     </View>
+    </SafeAreaView>
   );
 }
 
@@ -205,8 +275,13 @@ const styles = StyleSheet.create({
   },
   header: {
     height:150,
-    backgroundColor: '#e86f0c',
-    padding: 20,
+    backgroundColor: '#E67515',
+    padding: 10,
+    alignItems: 'flex-start',
+    justifyContent: 'center',
+  },
+
+  userDetail: {
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -214,6 +289,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#00000000',
     marginLeft: 10,
     flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'flex-start',
   }, 
 divider: {
     height:1,
@@ -223,20 +300,30 @@ divider: {
     marginRight: 10,
   },
   avatar: {
-    width: 60,
-    height: 60,
-    borderRadius: 30,
+    width: 80,
+    height: 80,
+    borderRadius: 15,
   },
   name: {
     color: '#fff',
     fontSize: 16,
-    marginTop: 10,
     fontFamily: Platform.OS === 'ios' ? 'SegoeUI-Bold' : 'segoe_bold',
   },
   role: {
     color: '#fff',
     fontSize: 12,
     fontFamily: Platform.OS === 'ios' ? 'SegoeUI' : 'segoe',
+    marginTop:2,
+  },
+  role1: {
+    alignSelf: 'flex-start',
+    color: '#F84003',
+    backgroundColor: '#F1E6DE',
+    fontSize: 12,
+    padding: 2,
+    fontFamily: Platform.OS === 'ios' ? 'SegoeUI' : 'segoe',
+    borderRadius: 2,
+    marginTop: 4,
   },
   section: {
     marginTop: 20,
@@ -259,6 +346,14 @@ section1: {
     color: '#48566A',
     fontFamily: Platform.OS === 'ios' ? 'SegoeUI' : 'segoe',
   },
+  activeItemText: {
+    padding: 5,
+    paddingLeft: 15,
+    fontSize: 14,
+    color: '#000',
+    fontFamily: Platform.OS === 'ios' ? 'SegoeUI' : 'segoe',
+  },
+  
   activeItem: {
     backgroundColor: '#FFD99480',
     color: '#000',
@@ -273,6 +368,40 @@ subMenuItem: {
 },
 
 activeMenuItem: {
-  backgroundColor: '#FFD99480', // 🔥 highlight
+  backgroundColor: '#FFD99480', 
 },
+user_image_container: {
+    marginLeft: 0,
+   
+},
+badge: {
+  position: 'absolute',
+  bottom: 4,  
+  right: 4,
+  backgroundColor: '#F84003',
+  borderWidth:1,
+  borderColor: '#fff',
+  borderRadius: 10,
+  minWidth: 15,
+  height: 15,
+  justifyContent: 'center',
+  alignItems: 'center',
+  paddingHorizontal: 3,
+},
+horizontalView: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 12,
+    marginTop: 30,
+  },
+logout: {
+    width: 20,
+    height: 20,
+  },
+ logoutText: {
+    color: '#F84003',
+    fontSize: 16,
+    fontFamily: Platform.OS === 'ios' ? 'SegoeUI' : 'segoe',
+    marginLeft:5,
+  },  
 });

@@ -155,8 +155,7 @@ const CustomHeader = () => {
       </View>
 
   </ScrollView>
-
-    </SafeAreaView>
+</SafeAreaView>
     
   )
 };

@@ -1,12 +1,45 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import CommonHeader  from '../components/CommonHeader';
 
-const Support = () => {
+const Support = ({ navigation }: any ) => {
   return (
-    <View>
-      <Text>Support Screen</Text>
+     <View style={styles.root}>
+      <SafeAreaView style={styles.screen} edges={['top','left', 'right', 'bottom']}>
+        <View style = {[{ }]}>
+          <CommonHeader
+            title="Support"
+            showLogo={false}
+            onMenuPress={() => navigation.openDrawer()}/>
+        </View>
+       <View style={styles.container}>
+         <ScrollView 
+            contentContainerStyle={styles.scrollContent}
+            showsVerticalScrollIndicator={false}>
+
+         </ScrollView>
+       </View>
+      </SafeAreaView>
     </View>
   );
 };
 
 export default Support;
+
+const styles = StyleSheet.create({
+  root: {
+    flex: 1,
+  },
+  screen: {
+    flex: 1,
+    backgroundColor: '#F8F7F5',
+  },
+  container: {
+    flex: 1,
+    backgroundColor: '#F8F7F5',
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start',
+    padding: 5,
+},
+})

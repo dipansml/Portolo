@@ -5,6 +5,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import Dashboard from '../screen/DashboardMain';
 import SystemAnalytics from '../screen/SystemAnalytics';
 import Announcements from '../screen/SystemAnnouncementNotification';
+import Subscription from '../screen/Subscription.tsx';
 import CustomDrawer from '../components/CustomDrawer';
 
 const Drawer = createDrawerNavigator();
@@ -21,7 +22,7 @@ export default function DrawerNavigator() {
       }}
     >
       <Drawer.Screen name="Dashboard" component={Dashboard} />
-      <Drawer.Screen name="Subscriptions" component={Dashboard} />
+      <Drawer.Screen name="Subscriptions" component={Subscription} />
       <Drawer.Screen name="SystemAnalytics" component={SystemAnalytics} />
       <Drawer.Screen name="Announcements" component={Announcements} />
       <Drawer.Screen name="BusinessCalender" component={Announcements} />
